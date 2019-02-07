@@ -1,0 +1,192 @@
+:root
+{
+	--header-bg: #263238;
+	--header-height: 55px;
+}
+
+
+header
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+	color: white;
+	height: var(--header-height);
+}
+
+header > div:first-child
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+header > div:last-child
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+
+.container-full
+{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+.container-horizontal-last-full
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+}
+
+.container-horizontal-last-full>div:not(:last-child){
+    order: 0;
+    flex: 0 1 auto;
+    align-self: center;
+}
+.container-horizontal-last-full > div:last-child{
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+}
+
+
+.container-vertical-last-full
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+	height: 100%;
+}
+
+.container-vertical-last-full > div:not(:last-child)
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: stretch;
+}
+
+.container-vertical-last-full > div:last-child
+{
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+}
+
+.container-vertical-middle-full
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+}
+
+.container-vertical-middle-full > div:first-child
+,.container-vertical-middle-full > div:last-child
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: stretch;
+}
+
+.container-vertical-middle-full > div:nth-child(2)
+{
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+}
+
+
+.left-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: stretch;
+    align-items: center;
+	box-sizing: border-box;
+}
+
+.left-center > div
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.right-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+	box-sizing: border-box;
+}
+
+.right-center > div
+{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.full-heigth
+{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+sauna-page>div
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+sauna-page>div>footer
+,sauna-page>div>header {
+	order: 0;
+    flex: 0 1 auto;
+    align-self: stretch;
+
+}
+
+sauna-page>div>.main
+{
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+	overflow: auto;
+	height: 100%;
+}
+

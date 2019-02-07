@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "db-finger": "^2.0.4",
+    "del": "^3.0.0",
+    "diabetes": "^1.0.7",
+    "gulp": "^4.0.0",
+    "npm": "^6.5.0",
+    "promiseutil": "^2.0.1",
+    "sauna-spa": "^2.0.3"
+  }
+}
