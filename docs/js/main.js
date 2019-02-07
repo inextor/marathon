@@ -3,6 +3,9 @@ import Util from '../Diabetes/Util.js';
 import PromiseUtils from '../PromiseUtils/PromiseUtils.js';
 import Finger from '../Finger/DatabaseStore.js';
 
+let timer_id = false;
+
+
 let n = new Navigation();
 n.setPageInit('page1');
 
@@ -33,16 +36,25 @@ Util.getById('stopButton').addEventListener('click',(evt)=>
 {
 	Util.stopEvent( evt );
 	nxt_stop_geolocation();
+	n.click_anchorHash( '#page1' );
 });
+
+
+let distance = 0;
+let counter = 0;
+let previousPoint = null;
+let currentPoint = null;
+let lastUpdated = null;
 
 Util.getById('startButton').addEventListener('click',(evt)=>
 {
 	Util.stopEvent( evt );
 	let buffer	= [];
 	let session_id = Date.now();
-	let counter = 0;
-
 	n.click_anchorHash( '#pageRunning' );
+
+	timer_id = setInterval( updateDistance, 4000 );
+
 	nxt_start_geolocation
 	({
 		options:
@@ -73,35 +85,76 @@ Util.getById('startButton').addEventListener('click',(evt)=>
 				,speed: p.coords.speed
 			};
 
+			currentPoint = coord_copy;
 
 			buffer.push( coord_copy );
-
-			for( let i in coord_copy )
-			{
-				let d = Util.getById( i );
-
-				if( d )
-				 d.textContent = ''+coord_copy[ i ];
-			}
-
-			Util.getById('counter').textContent = counter;
 
 			if( buffer.length > 10 )
 			{
 				let copy = buffer.splice(0,buffer.length);
 
-				db.addItems('session', copy, true ).catch((e)=>
+				setTimeout(()=>
 				{
-					console.log('Error');
-				});
+					db.addItems('session', copy, true ).catch((e)=>
+					{
+						console.log('Error');
+					});
+				},10);
 			}
 		}
 	});
 });
 
 
+function updateDistance()
+{
+	Util.getById('counter').textContent = counter;
 
+	if( previousPoint === null )
+	{
+		previousPoint = currentPoint;
+		return;
+	}
 
+	if( currentPoint === null || lastUpdated === currentPoint )
+		return;
+
+	for( let i in currentPoint)
+	{
+		let d = Util.getById( i );
+
+		if( d )
+		 d.textContent = ''+currentPoint[ i ];
+	}
+
+	let d = getDistance( currentPoint.latitude, currentPoint.longitude, previousPoint.latitude, previousPoint.longitude );
+
+	if( !isNaN( d ) )
+		distance += d;
+
+	Util.getById('distance').textContent = distance;
+
+	lastUpdated = currentPoint;
+}
+
+function toRadians(val)
+{
+	return val * Math.PI / 180;
+}
+function getDistance(lat1,lon1, lon2, lat2 )
+{
+	var R = 6371e3; // metres
+	var φ1 = toRadians( lat1 );
+	var φ2 = toRadians( lat2 );
+	var Δφ = toRadians(lat2-lat1);
+	var Δλ = toRadians(lon2-lon1);
+
+	var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+		Math.cos(φ1) * Math.cos(φ2) *
+		Math.sin(Δλ/2) * Math.sin(Δλ/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	var d = R * c;
+}
 /*
 nxt_start_geolocation
 ({
