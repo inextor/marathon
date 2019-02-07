@@ -1,0 +1,65 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="webmanifest.webmanifest">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link media="all" rel="stylesheet" href="css/layout.css">
+		<link media="all" rel="stylesheet" href="css/theme.css">
+		<link media="all" rel="stylesheet" href="Sauna/css/Sauna.css">
+		<script type="module" src="js/main.js"></script>
+	</head>
+	<body>
+		<sauna-page id="page1">
+			<div>
+				<header >
+					<div class="title">Notes</div>
+					<div class="left-center">
+						<div>
+							<label class="button-icon" for="search-input"><i class="material-icons">search</i></label>
+						</div>
+					</div>
+				</header>
+				<div>
+					<h1>An Awesome app</h1>
+					<div class="container"><a class="button" id="startButton" href="#" class="button">Add New</a></div>
+					<!--div class="container"><a class="button" href="#page3">To page 3</a></div-->
+				</div>
+				<footer>Footer</footer>
+			</div>
+		</sauna-page>
+		<sauna-page id="pageRunning">
+			<div>
+				<header >
+					<div>
+						<span class="title">Running</span>
+					</div>
+					<div></div>
+				</header>
+				<div class="main">
+					<div>
+						<h2>Page2</h2>
+						<div>
+							<div class="container"><a class="button" id="stopButton" href="#">Stop</a></div>
+						</div>
+						<div class="container">
+							<div><b>Counter</b>: <span id="counter"></span></div>
+							<div><b>distance</b>: <span id="distance"></span></div>
+							<div><b>Speed</b><span id="speed"></span></div>
+							<div><b>latitude</b><span id="latitude"> p.coords.latitude</span></div>
+							<div><b>longitude</b><span id="longitude"> p.coords.longitude</span></div>
+							<div><b>altitude</b><span id="altitude"> p.coords.altitude</span></div>
+							<div><b>accuracy</b><span id="accuracy"> p.coords.accuracy</span></div>
+							<div><b>heading</b><span id="heading"> p.coords.heading</span></div>
+						</div>
+						<div class="container">
+							<div id="error"></div>
+							<div id="error_counter"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</sauna-page>
+	</body>
+</html>
