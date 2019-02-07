@@ -40,6 +40,47 @@ Util.getById('stopButton').addEventListener('click',(evt)=>
 });
 
 
+Util.getById('generateBackup').addEventListener('click',(evt)=>
+{
+
+	Util.getById('backupStatus').textContent= 'creating backup';
+
+	db.createBackup().then(( obj )=>
+	{
+		for(let i in obj)
+		{
+			let objb = {};
+			objb[ i ] = obj[ i ];
+
+			let string = JSON.stringify( objb );
+			console.log( string.length );
+			let blob = new Blob([string],{ type:'application/json'});
+			string = null;
+			let objectURL = URL.createObjectURL( blob );
+
+			delete obj[ i ];
+
+			let date = new Date();
+
+			let anchor = window.document.createElement('a');
+			anchor.setAttribute('download', i.toUpperCase()+'_backup_'+date.toISOString()+'.json');
+			anchor.setAttribute('href', objectURL );
+			anchor.textContent = 'Backup_'+i.toUpperCase()+"_"+date.toISOString();
+			anchor.classList.add('button');
+			Util.getById('backupStatus').append( anchor );
+			//URL.revokeObjectURL( objectURL );
+			let br = document.createElement('br');
+			Util.getById('backupStatus').append( br );
+		}
+	})
+	.catch((e)=>
+	{
+		console.log('Error creating backup', e );
+		Util.getById('backupStatus').textContent= 'Error creating backup';
+	});
+});
+
+
 let distance = 0;
 let counter = 0;
 let previousPoint = null;

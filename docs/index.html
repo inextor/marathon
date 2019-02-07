@@ -24,6 +24,7 @@
 				</header>
 				<div>
 					<h1>An Awesome app</h1>
+					<div class="container"><a class="button" href="#backup_page" class="button">Backup Page</a></div>
 					<div class="container"><a class="button" id="startButton" href="#" class="button">Add New</a></div>
 					<!--div class="container"><a class="button" href="#page3">To page 3</a></div-->
 				</div>
@@ -60,6 +61,39 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</sauna-page>
+		<sauna-page id="session_lists">
+			<div>
+				<header >
+					<div class="title">Sessions</div>
+					<div class="left-center">
+						<div>
+							<a href="page1" class="button-icon" for="search-input"><i class="material-icons">search</i></a>
+						</div>
+					</div>
+				</header>
+				<div id="session_lists">
+				</div>
+				<footer>Footer</footer>
+			</div>
+		</sauna-page>
+		<sauna-page id="backup_page">
+			<div>
+				<header >
+					<div>
+						<a href="page1" class="button-icon" for="search-input"><i class="material-icons">search</i></a>
+						<span class="title">Backup</span>
+					</div>
+				</header>
+				<div id="backup_lists">
+					<div>
+						<a href="#" id="generateBackup" class="button">Generate Backup</a>
+					<div>
+
+					<div id="backupStatus"></div>
+				</div>
+				<footer>Footer</footer>
 			</div>
 		</sauna-page>
 	</body>

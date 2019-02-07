@@ -1,11 +1,11 @@
 {
   "version": "0.2.0",
   "name": "Temp",
-  "short_name": "Template",
+  "short_name": "Marathon",
   "start_url": "index.html",
   "display":"fullscreen",
   "background_color": "#fff",
-  "description": "Another example app",
+  "description": "A running tracking app",
   "icons": [{
     "src": "images/48.png",
     "sizes": "48x48",
